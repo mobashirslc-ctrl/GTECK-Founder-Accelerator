@@ -3,99 +3,663 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GTECK Founder Accelerator | A 360° Startup Support Program</title>
+    <title>GTECK Founder Accelerator - A 360° Startup Support Program</title>
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap" rel="stylesheet">
+    <!-- Google Fonts (Poppins & Hind Siliguri) -->
+    <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome for Minimal Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brandBlue: '#0052CC',
+                        brandOrange: '#FF6B00',
+                        brandDark: '#1E293B',
+                    },
+                    fontFamily: {
+                        sans: ['Poppins', 'Hind Siliguri', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
     <style>
-        body { font-family: 'Inter', sans-serif; scroll-behavior: smooth; }
-        .glass-orange {
-            background: rgba(249, 115, 22, 0.1);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border: 1px solid rgba(249, 115, 22, 0.3);
+        html { scroll-behavior: smooth; }
+        .gradient-bg {
+            background: linear-gradient(135deg, #F8FAFC 0%, #E0F2FE 50%, #FFF7ED 100%);
+        }
+        .hero-gradient {
+            background: radial-gradient(circle at top right, rgba(255, 107, 0, 0.05), transparent 40%),
+                        radial-gradient(circle at bottom left, rgba(0, 82, 204, 0.05), transparent 40%);
         }
     </style>
 </head>
-<body class="bg-slate-50 text-slate-900 antialiased">
+<body class="font-sans text-slate-800 bg-slate-50 gradient-bg min-h-screen">
 
     <!-- 1. Navbar -->
-    <nav class="bg-white/80 backdrop-blur-md border-b border-slate-100 sticky top-0 z-50 shadow-sm">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex items-center justify-between">
-            <div class="flex items-center gap-2 cursor-pointer" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">
-                <div class="bg-gradient-to-tr from-blue-600 to-orange-500 p-2 rounded-xl text-white shadow-md">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.71.79-1.81.79-1.81l-1.98-1.19s-1.1 1.1-1.81 1.81z"/><path d="M10 10V4.5L16 3l1.5 1.5-1.5 6H21l-1.5 6H14l-1.5 1.5-6-1.5L4.5 10H10z"/></svg>
+    <nav class="sticky top-0 z-50 bg-white/80 backdrop-blur-md border-b border-slate-100 shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <div class="flex-shrink-0 flex items-center space-x-2">
+                    <span class="text-2xl font-bold tracking-wider text-brandDark">G<span class="text-brandBlue">TECK</span></span>
+                </div>
+                <div class="hidden md:flex space-x-8 font-medium">
+                    <a href="#home" class="text-brandBlue hover:text-brandBlue transition">Home</a>
+                    <a href="#about" class="text-slate-600 hover:text-brandBlue transition">About Program</a>
+                    <a href="#benefits" class="text-slate-600 hover:text-brandBlue transition">Benefits</a>
+                    <a href="#selection" class="text-slate-600 hover:text-brandBlue transition">Selection Process</a>
+                    <a href="#faq" class="text-slate-600 hover:text-brandBlue transition">FAQ</a>
                 </div>
                 <div>
-                    <span class="font-extrabold text-xl tracking-tight text-slate-900">GTECK</span>
-                    <span class="text-orange-500 font-bold text-xs block -mt-1 tracking-wider uppercase">Accelerator</span>
+                    <a href="#apply" class="bg-brandOrange text-white px-6 py-3 rounded-full font-semibold hover:bg-orange-600 transition shadow-md shadow-orange-500/20 inline-block">Apply Now</a>
                 </div>
             </div>
-            <div class="hidden md:flex items-center gap-8">
-                <a href="#about" class="text-sm font-semibold text-slate-600 hover:text-orange-500 transition-colors">About</a>
-                <a href="#benefits" class="text-sm font-semibold text-slate-600 hover:text-orange-500 transition-colors">Benefits</a>
-                <a href="#process" class="text-sm font-semibold text-slate-600 hover:text-orange-500 transition-colors">Process</a>
-                <a href="#faq" class="text-sm font-semibold text-slate-600 hover:text-orange-500 transition-colors">FAQ</a>
-            </div>
-            <a href="#apply" class="bg-slate-900 text-white text-sm font-bold px-6 py-2.5 rounded-xl hover:bg-orange-500 transition-all">Apply Now</a>
         </div>
     </nav>
 
     <!-- 2. Hero Section -->
-    <section class="relative overflow-hidden bg-gradient-to-b from-blue-950 via-slate-900 to-slate-950 text-white pt-24 pb-20 px-4">
-        <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-            <div class="lg:col-span-7 space-y-6">
-                <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-xs font-semibold tracking-wider uppercase text-orange-400 bg-orange-500/10 border border-orange-500/20">⚡ GTECK Founder Accelerator</div>
-                <h1 class="text-4xl sm:text-6xl font-black leading-tight">A 360° Startup <br><span class="text-orange-500">Support Program</span></h1>
-                <p class="text-lg font-bold text-blue-300">আপনার কাছে কি একটি ব্যবসায়িক আইডিয়া আছে? কিন্তু টেকনিক্যাল টিম বা বাজেটের অভাবে শুরু করতে পারছেন না?</p>
-                <p class="text-slate-300">আমরা নির্বাচিত Startup Founder-দের জন্য Development, Marketing এবং Mentorship সাপোর্ট প্রদান করবো।</p>
-                <div class="flex flex-wrap gap-4 pt-4">
-                    <a href="#apply" class="bg-orange-500 text-white font-bold px-8 py-3.5 rounded-xl hover:bg-orange-600 shadow-xl shadow-orange-500/20">Apply Now</a>
-                    <a href="#about" class="bg-white/10 border border-white/10 text-white font-bold px-8 py-3.5 rounded-xl">Learn More</a>
+    <section id="home" class="hero-gradient py-12 lg:py-24 overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <div class="space-y-6 text-center lg:text-left">
+                    <div class="inline-flex items-center space-x-2 bg-blue-50 text-brandBlue px-4 py-2 rounded-full text-sm font-semibold">
+                        <span class="flex h-2 w-2 rounded-full bg-brandBlue animate-ping"></span>
+                        <span>GTECK Founder Accelerator</span>
+                    </div>
+                    <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-slate-900 leading-tight">
+                        A 360° Startup <br><span class="text-brandBlue">Support Program</span>
+                    </h1>
+                    <p class="text-xl font-semibold text-brandOrange mt-4">আপনার কাছে কি একটি ব্যবসায়িক আইডিয়া আছে?</p>
+                    <p class="text-base sm:text-lg text-slate-600 max-w-xl mx-auto lg:mx-0 leading-relaxed">
+                        কিন্তু টেকনিক্যাল টিম, পর্যাপ্ত বাজেট কিংবা সঠিক দিকনির্দেশনার অভাবে শুরু করতে পারছেন না? আমরা নির্বাচিত Startup Founder-দের জন্য Website/App Development, Digital Marketing Support, Mentorship এবং Growth Support প্রদান করবো।
+                    </p>
+                    <div class="pt-4 flex flex-col sm:flex-row justify-center lg:justify-start gap-4">
+                        <a href="#apply" class="bg-brandDark text-white px-8 py-4 rounded-xl font-medium hover:bg-slate-800 transition shadow-lg text-center">Apply Now</a>
+                        <a href="#about" class="bg-white text-slate-700 border border-slate-200 px-8 py-4 rounded-xl font-medium hover:bg-slate-50 transition text-center flex items-center justify-center space-x-2">
+                            <span>Learn More</span> <i class="fa-solid fa-arrow-right text-sm"></i>
+                        </a>
+                    </div>
+                </div>
+                <!-- Right Side: Startup Illustration Mockup -->
+                <div class="relative flex justify-center lg:justify-end">
+                    <div class="w-full max-w-md bg-white p-6 rounded-3xl shadow-xl border border-slate-100 relative z-10">
+                        <div class="flex items-center justify-between border-b pb-4 mb-6">
+                            <span class="font-bold text-slate-800"><i class="fa-solid fa-rocket text-brandOrange mr-2"></i>Ecosystem Workspace</span>
+                            <span class="text-xs bg-green-100 text-green-700 px-2 py-1 rounded-full font-medium">Live Active</span>
+                        </div>
+                        <div class="space-y-4">
+                            <div class="bg-slate-50 p-4 rounded-2xl flex items-center space-x-4">
+                                <div class="bg-blue-100 text-brandBlue p-3 rounded-xl"><i class="fa-solid fa-laptop text-xl"></i></div>
+                                <div class="flex-1"><div class="h-3 bg-slate-200 rounded w-2/3 mb-2"></div><div class="h-2 bg-slate-200 rounded w-1/2"></div></div>
+                            </div>
+                            <div class="bg-slate-50 p-4 rounded-2xl flex items-center space-x-4">
+                                <div class="bg-orange-100 text-brandOrange p-3 rounded-xl"><i class="fa-solid fa-mobile-screen text-xl"></i></div>
+                                <div class="flex-1"><div class="h-3 bg-slate-200 rounded w-1/2 mb-2"></div><div class="h-2 bg-slate-200 rounded w-1/3"></div></div>
+                            </div>
+                            <div class="bg-slate-50 p-4 rounded-2xl">
+                                <div class="flex items-center justify-between mb-2">
+                                    <span class="text-xs font-semibold text-slate-500">Business Growth Graph</span>
+                                    <span class="text-xs text-brandBlue font-bold">+145%</span>
+                                </div>
+                                <div class="h-16 flex items-end space-x-2 pt-2">
+                                    <div class="bg-blue-200 w-full h-8 rounded-t"></div>
+                                    <div class="bg-blue-300 w-full h-12 rounded-t"></div>
+                                    <div class="bg-brandBlue w-full h-16 rounded-t"></div>
+                                    <div class="bg-brandOrange w-full h-20 rounded-t"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="absolute -top-4 -left-4 w-72 h-72 bg-blue-400/10 rounded-full blur-3xl"></div>
+                    <div class="absolute -bottom-4 -right-4 w-72 h-72 bg-orange-400/10 rounded-full blur-3xl"></div>
                 </div>
             </div>
-            <div class="lg:col-span-5">
-                <div class="glass-orange p-8 rounded-3xl space-y-6">
-                    <div class="grid grid-cols-2 gap-4 text-center">
-                        <div class="p-4 rounded-2xl bg-white/5 border border-white/5">
-                            <div class="text-blue-400 mb-2 flex justify-center"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg></div>
-                            <span class="text-xs font-semibold text-slate-300">Website MVP</span>
+        </div>
+    </section>
+
+    <!-- 3. Problem Section -->
+    <section class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h2 class="text-3xl sm:text-4xl font-bold text-slate-900">অনেক ভালো ব্যবসায়িক আইডিয়া শুরু হওয়ার আগেই হারিয়ে যায়</h2>
+                <div class="h-1 w-20 bg-brandOrange mx-auto mt-4 rounded-full"></div>
+            </div>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6">
+                <!-- Card 1 -->
+                <div class="bg-slate-50 p-6 rounded-2xl border border-slate-100 hover:shadow-lg transition group text-center">
+                    <div class="w-12 h-12 bg-red-50 text-red-500 rounded-xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition">
+                        <i class="fa-solid fa-users-slash text-xl"></i>
+                    </div>
+                    <h3 class="font-semibold text-slate-800">Lack of Technical Team</h3>
+                </div>
+                <!-- Card 2 -->
+                <div class="bg-slate-50 p-6 rounded-2xl border border-slate-100 hover:shadow-lg transition group text-center">
+                    <div class="w-12 h-12 bg-red-50 text-red-500 rounded-xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition">
+                        <i class="fa-solid fa-wallet text-xl"></i>
+                    </div>
+                    <h3 class="font-semibold text-slate-800">Limited Budget</h3>
+                </div>
+                <!-- Card 3 -->
+                <div class="bg-slate-50 p-6 rounded-2xl border border-slate-100 hover:shadow-lg transition group text-center">
+                    <div class="w-12 h-12 bg-red-50 text-red-500 rounded-xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition">
+                        <i class="fa-solid fa-user-gradient text-xl"></i>
+                    </div>
+                    <h3 class="font-semibold text-slate-800">No Mentorship</h3>
+                </div>
+                <!-- Card 4 -->
+                <div class="bg-slate-50 p-6 rounded-2xl border border-slate-100 hover:shadow-lg transition group text-center">
+                    <div class="w-12 h-12 bg-red-50 text-red-500 rounded-xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition">
+                        <i class="fa-solid fa-bullhorn text-xl"></i>
+                    </div>
+                    <h3 class="font-semibold text-slate-800">Marketing Challenges</h3>
+                </div>
+                <!-- Card 5 -->
+                <div class="bg-slate-50 p-6 rounded-2xl border border-slate-100 hover:shadow-lg transition group text-center">
+                    <div class="w-12 h-12 bg-red-50 text-red-500 rounded-xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition">
+                        <i class="fa-solid fa-compass text-xl"></i>
+                    </div>
+                    <h3 class="font-semibold text-slate-800">Lack of Business Guidance</h3>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. About Program -->
+    <section id="about" class="py-20 bg-slate-50/50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <div class="order-2 lg:order-1 flex justify-center">
+                    <!-- Founder + Team Illustration Placeholder -->
+                    <div class="relative w-full max-w-md bg-white p-8 rounded-3xl shadow-xl border border-slate-100 text-center">
+                        <div class="w-24 h-24 bg-brandBlue/10 rounded-full flex items-center justify-center mx-auto mb-4">
+                            <i class="fa-solid fa-handshake text-4xl text-brandBlue"></i>
                         </div>
-                        <div class="p-4 rounded-2xl bg-white/5 border border-white/5">
-                            <div class="text-orange-400 mb-2 flex justify-center"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg></div>
-                            <span class="text-xs font-semibold text-slate-300">Mobile App</span>
+                        <h4 class="font-bold text-lg text-slate-800 mb-2">Founder + Team Collaboration</h4>
+                        <p class="text-sm text-slate-500">আমরা আপনার আইডিয়ার শুরু থেকে শেষ পর্যন্ত টিম হিসেবে কাজ করবো।</p>
+                        <div class="mt-6 flex justify-center -space-x-2">
+                            <div class="w-10 h-10 rounded-full bg-blue-500 border-2 border-white flex items-center justify-center text-white text-xs font-bold">F</div>
+                            <div class="w-10 h-10 rounded-full bg-orange-500 border-2 border-white flex items-center justify-center text-white text-xs font-bold">T1</div>
+                            <div class="w-10 h-10 rounded-full bg-slate-700 border-2 border-white flex items-center justify-center text-white text-xs font-bold">T2</div>
                         </div>
+                    </div>
+                </div>
+                <div class="space-y-6 order-1 lg:order-2">
+                    <h2 class="text-3xl sm:text-4xl font-bold text-slate-900">GTECK Founder Accelerator কী?</h2>
+                    <div class="h-1 w-20 bg-brandBlue rounded-full"></div>
+                    <p class="text-lg text-slate-600 leading-relaxed">
+                        GTECK-এর একটি বিশেষ উদ্যোগ, যার মাধ্যমে সম্ভাবনাময় উদ্যোক্তাদের Startup তৈরির জন্য 360° Support প্রদান করা হবে।
+                    </p>
+                    <div class="space-y-3">
+                        <div class="flex items-center space-x-3"><i class="fa-solid fa-circle-check text-brandOrange"></i> <span class="font-medium">সম্পূর্ণ এন্ড-টু-এন্ড গাইডেন্স</span></div>
+                        <div class="flex items-center space-x-3"><i class="fa-solid fa-circle-check text-brandOrange"></i> <span class="font-medium">রিয়েল-টাইম টেক সাপোর্ট</span></div>
+                        <div class="flex items-center space-x-3"><i class="fa-solid fa-circle-check text-brandOrange"></i> <span class="font-medium">লং-টার্ম পার্টনারশিপ মডেল</span></div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- 3. About -->
-    <section id="about" class="py-20 bg-white px-4 text-center">
-        <h2 class="text-3xl sm:text-4xl font-black text-slate-900 mb-4">GTECK Founder Accelerator কী?</h2>
-        <p class="max-w-2xl mx-auto text-slate-600">GTECK-এর একটি বিশেষ উদ্যোগ, যার মাধ্যমে সম্ভাবনাময় উদ্যোক্তাদের Startup তৈরির জন্য 360° Support প্রদান করা হবে।</p>
+    <!-- 5. Who Can Apply -->
+    <section class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h2 class="text-3xl sm:text-4xl font-bold text-slate-900">কারা আবেদন করতে পারবেন?</h2>
+                <div class="h-1 w-20 bg-brandOrange mx-auto mt-4 rounded-full"></div>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Card 1 -->
+                <div class="bg-slate-50 p-8 rounded-2xl border border-slate-100 flex items-start space-x-4">
+                    <div class="bg-blue-50 text-brandBlue p-3 rounded-xl"><i class="fa-solid fa-graduation-cap text-xl"></i></div>
+                    <div><h3 class="font-bold text-xl text-slate-800">Students</h3></div>
+                </div>
+                <!-- Card 2 -->
+                <div class="bg-slate-50 p-8 rounded-2xl border border-slate-100 flex items-start space-x-4">
+                    <div class="bg-blue-50 text-brandBlue p-3 rounded-xl"><i class="fa-solid fa-laptop-code text-xl"></i></div>
+                    <div><h3 class="font-bold text-xl text-slate-800">Freelancers</h3></div>
+                </div>
+                <!-- Card 3 -->
+                <div class="bg-slate-50 p-8 rounded-2xl border border-slate-100 flex items-start space-x-4">
+                    <div class="bg-blue-50 text-brandBlue p-3 rounded-xl"><i class="fa-solid fa-store text-xl"></i></div>
+                    <div><h3 class="font-bold text-xl text-slate-800">Small Business Owners</h3></div>
+                </div>
+                <!-- Card 4 -->
+                <div class="bg-slate-50 p-8 rounded-2xl border border-slate-100 flex items-start space-x-4">
+                    <div class="bg-blue-50 text-brandBlue p-3 rounded-xl"><i class="fa-solid fa-video text-xl"></i></div>
+                    <div><h3 class="font-bold text-xl text-slate-800">Content Creators</h3></div>
+                </div>
+                <!-- Card 5 -->
+                <div class="bg-slate-50 p-8 rounded-2xl border border-slate-100 flex items-start space-x-4">
+                    <div class="bg-blue-50 text-brandBlue p-3 rounded-xl"><i class="fa-solid fa-lightbulb text-xl"></i></div>
+                    <div><h3 class="font-bold text-xl text-slate-800">Aspiring Entrepreneurs</h3></div>
+                </div>
+                <!-- Card 6 -->
+                <div class="bg-slate-50 p-8 rounded-2xl border border-slate-100 flex items-start space-x-4">
+                    <div class="bg-blue-50 text-brandBlue p-3 rounded-xl"><i class="fa-solid fa-chart-line text-xl"></i></div>
+                    <div><h3 class="font-bold text-xl text-slate-800">Existing Businesses Going Digital</h3></div>
+                </div>
+            </div>
+        </div>
     </section>
 
-    <!-- 4. Apply Section -->
-    <section id="apply" class="py-20 bg-slate-50 px-4">
-        <div class="max-w-3xl mx-auto bg-white p-8 rounded-3xl shadow-xl border border-slate-100">
-            <h2 class="text-2xl font-black text-center mb-8">Application Form</h2>
-            <form action="#" class="space-y-4">
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    <input type="text" placeholder="Full Name" class="w-full p-3 border rounded-xl outline-none focus:border-orange-500">
-                    <input type="tel" placeholder="Mobile Number" class="w-full p-3 border rounded-xl outline-none focus:border-orange-500">
+    <!-- 6. What Selected Founders Will Receive -->
+    <section id="benefits" class="py-20 bg-slate-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h2 class="text-3xl sm:text-4xl font-bold text-slate-900">What Selected Founders Will Receive</h2>
+                <div class="h-1 w-20 bg-brandBlue mx-auto mt-4 rounded-full"></div>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- 1 -->
+                <div class="bg-white p-6 rounded-2xl shadow-sm hover:shadow-md transition flex items-center space-x-4 border border-slate-100">
+                    <div class="text-brandOrange bg-orange-50 p-3 rounded-xl"><i class="fa-solid fa-code"></i></div>
+                    <span class="font-semibold text-slate-800">Website Development Support</span>
                 </div>
-                <input type="email" placeholder="Email Address" class="w-full p-3 border rounded-xl outline-none focus:border-orange-500">
-                <textarea placeholder="Describe Your Business Idea" rows="4" class="w-full p-3 border rounded-xl outline-none focus:border-orange-500"></textarea>
-                <button type="submit" class="w-full bg-slate-900 text-white font-black py-4 rounded-xl hover:bg-orange-500 transition-all">Submit Application</button>
+                <!-- 2 -->
+                <div class="bg-white p-6 rounded-2xl shadow-sm hover:shadow-md transition flex items-center space-x-4 border border-slate-100">
+                    <div class="text-brandOrange bg-orange-50 p-3 rounded-xl"><i class="fa-solid fa-mobile-screen-button"></i></div>
+                    <span class="font-semibold text-slate-800">Mobile App Development Support</span>
+                </div>
+                <!-- 3 -->
+                <div class="bg-white p-6 rounded-2xl shadow-sm hover:shadow-md transition flex items-center space-x-4 border border-slate-100">
+                    <div class="text-brandOrange bg-orange-50 p-3 rounded-xl"><i class="fa-solid fa-palette"></i></div>
+                    <span class="font-semibold text-slate-800">UI/UX Design</span>
+                </div>
+                <!-- 4 -->
+                <div class="bg-white p-6 rounded-2xl shadow-sm hover:shadow-md transition flex items-center space-x-4 border border-slate-100">
+                    <div class="text-brandOrange bg-orange-50 p-3 rounded-xl"><i class="fa-solid fa-gauge"></i></div>
+                    <span class="font-semibold text-slate-800">Admin Dashboard</span>
+                </div>
+                <!-- 5 -->
+                <div class="bg-white p-6 rounded-2xl shadow-sm hover:shadow-md transition flex items-center space-x-4 border border-slate-100">
+                    <div class="text-brandOrange bg-orange-50 p-3 rounded-xl"><i class="fa-solid fa-comments text-xl"></i></div>
+                    <span class="font-semibold text-slate-800">Business Consultation</span>
+                </div>
+                <!-- 6 -->
+                <div class="bg-white p-6 rounded-2xl shadow-sm hover:shadow-md transition flex items-center space-x-4 border border-slate-100">
+                    <div class="text-brandOrange bg-orange-50 p-3 rounded-xl"><i class="fa-solid fa-chess text-xl"></i></div>
+                    <span class="font-semibold text-slate-800">Growth Strategy</span>
+                </div>
+                <!-- 7 -->
+                <div class="bg-white p-6 rounded-2xl shadow-sm hover:shadow-md transition flex items-center space-x-4 border border-slate-100">
+                    <div class="text-brandOrange bg-orange-50 p-3 rounded-xl"><i class="fa-solid fa-share-nodes text-xl"></i></div>
+                    <span class="font-semibold text-slate-800">Digital Marketing Support</span>
+                </div>
+                <!-- 8 -->
+                <div class="bg-white p-6 rounded-2xl shadow-sm hover:shadow-md transition flex items-center space-x-4 border border-slate-100">
+                    <div class="text-brandOrange bg-orange-50 p-3 rounded-xl"><i class="fa-solid fa-network-wired text-xl"></i></div>
+                    <span class="font-semibold text-slate-800">Networking Opportunities</span>
+                </div>
+                <!-- 9 -->
+                <div class="bg-white p-6 rounded-2xl shadow-sm hover:shadow-md transition flex items-center space-x-4 border border-slate-100">
+                    <div class="text-brandOrange bg-orange-50 p-3 rounded-xl"><i class="fa-solid fa-hand-holding-dollar text-xl"></i></div>
+                    <span class="font-semibold text-slate-800">Investor Connection Support</span>
+                </div>
+                <!-- 10 -->
+                <div class="bg-white p-6 rounded-2xl shadow-sm hover:shadow-md transition flex items-center space-x-4 border border-slate-100 lg:col-span-3 lg:justify-center">
+                    <div class="text-brandOrange bg-orange-50 p-3 rounded-xl"><i class="fa-solid fa-cloud-arrow-up text-xl"></i></div>
+                    <span class="font-semibold text-slate-800">Deployment Assistance</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 7. Selection Process -->
+    <section id="selection" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h2 class="text-3xl sm:text-4xl font-bold text-slate-900">Selection Process</h2>
+                <div class="h-1 w-20 bg-brandOrange mx-auto mt-4 rounded-full"></div>
+            </div>
+            <!-- Horizontal / Vertical Timeline -->
+            <div class="grid grid-cols-1 md:grid-cols-5 gap-6 text-center relative">
+                <div class="bg-slate-50 p-6 rounded-2xl border border-slate-100 relative">
+                    <div class="text-xs font-bold text-brandBlue mb-2">STEP 1</div>
+                    <h4 class="font-bold text-slate-800">Application Submission</h4>
+                </div>
+                <div class="bg-slate-50 p-6 rounded-2xl border border-slate-100 relative">
+                    <div class="text-xs font-bold text-brandBlue mb-2">STEP 2</div>
+                    <h4 class="font-bold text-slate-800">Initial Screening</h4>
+                </div>
+                <div class="bg-slate-50 p-6 rounded-2xl border border-slate-100 relative">
+                    <div class="text-xs font-bold text-brandBlue mb-2">STEP 3</div>
+                    <h4 class="font-bold text-slate-800">Founder Interview</h4>
+                </div>
+                <div class="bg-slate-50 p-6 rounded-2xl border border-slate-100 relative">
+                    <div class="text-xs font-bold text-brandBlue mb-2">STEP 4</div>
+                    <h4 class="font-bold text-slate-800">Final Selection</h4>
+                </div>
+                <div class="bg-slate-50 p-6 rounded-2xl border border-slate-100 relative">
+                    <div class="text-xs font-bold text-brandBlue mb-2">STEP 5</div>
+                    <h4 class="font-bold text-slate-800">Build & Launch</h4>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 8. Tech Support Package -->
+    <section class="py-20 bg-slate-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h2 class="text-3xl sm:text-4xl font-bold text-slate-900">Startup Technology Support</h2>
+                <div class="h-1 w-20 bg-brandBlue mx-auto mt-4 rounded-full"></div>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6">
+                <!-- 1 -->
+                <div class="bg-white p-6 rounded-2xl border border-slate-100 text-center shadow-sm">
+                    <div class="w-12 h-12 bg-blue-50 text-brandBlue rounded-full flex items-center justify-center mx-auto mb-4"><i class="fa-solid fa-globe"></i></div>
+                    <h4 class="font-bold text-slate-800">Website MVP</h4>
+                    <p class="text-sm text-slate-500 mt-1">Professional Website</p>
+                </div>
+                <!-- 2 -->
+                <div class="bg-white p-6 rounded-2xl border border-slate-100 text-center shadow-sm">
+                    <div class="w-12 h-12 bg-blue-50 text-brandBlue rounded-full flex items-center justify-center mx-auto mb-4"><i class="fa-solid fa-mobile-screen"></i></div>
+                    <h4 class="font-bold text-slate-800">Mobile App MVP</h4>
+                    <p class="text-sm text-slate-500 mt-1">Android/iOS App</p>
+                </div>
+                <!-- 3 -->
+                <div class="bg-white p-6 rounded-2xl border border-slate-100 text-center shadow-sm">
+                    <div class="w-12 h-12 bg-blue-50 text-brandBlue rounded-full flex items-center justify-center mx-auto mb-4"><i class="fa-solid fa-table-columns"></i></div>
+                    <h4 class="font-bold text-slate-800">Admin Panel</h4>
+                    <p class="text-sm text-slate-500 mt-1">Dashboard</p>
+                </div>
+                <!-- 4 -->
+                <div class="bg-white p-6 rounded-2xl border border-slate-100 text-center shadow-sm">
+                    <div class="w-12 h-12 bg-blue-50 text-brandBlue rounded-full flex items-center justify-center mx-auto mb-4"><i class="fa-solid fa-bezier-curve"></i></div>
+                    <h4 class="font-bold text-slate-800">UI/UX Design</h4>
+                    <p class="text-sm text-slate-500 mt-1">Modern Interface</p>
+                </div>
+                <!-- 5 -->
+                <div class="bg-white p-6 rounded-2xl border border-slate-100 text-center shadow-sm">
+                    <div class="w-12 h-12 bg-blue-50 text-brandBlue rounded-full flex items-center justify-center mx-auto mb-4"><i class="fa-solid fa-server"></i></div>
+                    <h4 class="font-bold text-slate-800">Deployment Support</h4>
+                    <p class="text-sm text-slate-500 mt-1">Launch Assistance</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 9. Additional Support -->
+    <section class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                <!-- Col 1 -->
+                <div class="bg-slate-50 p-8 rounded-3xl border border-slate-100">
+                    <h3 class="text-2xl font-bold text-slate-950 mb-6 flex items-center"><i class="fa-solid fa-bullhorn text-brandOrange mr-3"></i>Digital Marketing Support</h3>
+                    <ul class="space-y-4">
+                        <li class="flex items-center space-x-3"><i class="fa-solid fa-circle text-xs text-brandOrange"></i> <span class="font-medium text-slate-700">Branding</span></li>
+                        <li class="flex items-center space-x-3"><i class="fa-solid fa-circle text-xs text-brandOrange"></i> <span class="font-medium text-slate-700">Facebook Marketing</span></li>
+                        <li class="flex items-center space-x-3"><i class="fa-solid fa-circle text-xs text-brandOrange"></i> <span class="font-medium text-slate-700">Content Strategy</span></li>
+                        <li class="flex items-center space-x-3"><i class="fa-solid fa-circle text-xs text-brandOrange"></i> <span class="font-medium text-slate-700">Lead Generation</span></li>
+                    </ul>
+                </div>
+                <!-- Col 2 -->
+                <div class="bg-slate-50 p-8 rounded-3xl border border-slate-100">
+                    <h3 class="text-2xl font-bold text-slate-950 mb-6 flex items-center"><i class="fa-solid fa-chart-line text-brandBlue mr-3"></i>Business Growth Support</h3>
+                    <ul class="space-y-4">
+                        <li class="flex items-center space-x-3"><i class="fa-solid fa-circle text-xs text-brandBlue"></i> <span class="font-medium text-slate-700">Mentorship</span></li>
+                        <li class="flex items-center space-x-3"><i class="fa-solid fa-circle text-xs text-brandBlue"></i> <span class="font-medium text-slate-700">Business Model Guidance</span></li>
+                        <li class="flex items-center space-x-3"><i class="fa-solid fa-circle text-xs text-brandBlue"></i> <span class="font-medium text-slate-700">Market Validation</span></li>
+                        <li class="flex items-center space-x-3"><i class="fa-solid fa-circle text-xs text-brandBlue"></i> <span class="font-medium text-slate-700">Go-To-Market Strategy</span></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 10. Success Roadmap -->
+    <section class="py-20 bg-slate-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h2 class="text-3xl sm:text-4xl font-bold text-slate-900">Success Roadmap</h2>
+                <div class="h-1 w-20 bg-brandOrange mx-auto mt-4 rounded-full"></div>
+            </div>
+            <div class="flex flex-col md:flex-row justify-between items-center gap-4 max-w-4xl mx-auto">
+                <div class="bg-white px-6 py-4 rounded-full border shadow-sm font-bold text-slate-800 w-40 text-center">Idea</div>
+                <div class="text-brandOrange hidden md:block"><i class="fa-solid fa-arrow-right"></i></div>
+                <div class="bg-white px-6 py-4 rounded-full border shadow-sm font-bold text-slate-800 w-40 text-center">Validation</div>
+                <div class="text-brandOrange hidden md:block"><i class="fa-solid fa-arrow-right"></i></div>
+                <div class="bg-white px-6 py-4 rounded-full border shadow-sm font-bold text-slate-800 w-40 text-center">Selection</div>
+                <div class="text-brandOrange hidden md:block"><i class="fa-solid fa-arrow-right"></i></div>
+                <div class="bg-white px-6 py-4 rounded-full border shadow-sm font-bold text-slate-800 w-40 text-center">Development</div>
+                <div class="text-brandOrange hidden md:block"><i class="fa-solid fa-arrow-right"></i></div>
+                <div class="bg-white px-6 py-4 rounded-full border shadow-sm font-bold text-slate-800 w-40 text-center">Launch</div>
+                <div class="text-brandOrange hidden md:block"><i class="fa-solid fa-arrow-right"></i></div>
+                <div class="bg-white px-6 py-4 rounded-full border shadow-sm font-bold text-slate-800 w-40 text-center">Growth</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 11. Why GTECK -->
+    <section class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h2 class="text-3xl sm:text-4xl font-bold text-slate-900">Why GTECK</h2>
+                <div class="h-1 w-20 bg-brandBlue mx-auto mt-4 rounded-full"></div>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- 1 -->
+                <div class="bg-gradient-to-b from-slate-50 to-white p-8 rounded-2xl border border-slate-100 shadow-sm text-center">
+                    <div class="w-12 h-12 bg-blue-50 text-brandBlue rounded-xl flex items-center justify-center mx-auto mb-4"><i class="fa-solid fa-user-tie text-xl"></i></div>
+                    <h4 class="font-bold text-lg text-slate-800">Experienced Team</h4>
+                </div>
+                <!-- 2 -->
+                <div class="bg-gradient-to-b from-slate-50 to-white p-8 rounded-2xl border border-slate-100 shadow-sm text-center">
+                    <div class="w-12 h-12 bg-orange-50 text-brandOrange rounded-xl flex items-center justify-center mx-auto mb-4"><i class="fa-solid fa-lightbulb text-xl"></i></div>
+                    <h4 class="font-bold text-lg text-slate-800">Startup-Focused</h4>
+                </div>
+                <!-- 3 -->
+                <div class="bg-gradient-to-b from-slate-50 to-white p-8 rounded-2xl border border-slate-100 shadow-sm text-center">
+                    <div class="w-12 h-12 bg-blue-50 text-brandBlue rounded-xl flex items-center justify-center mx-auto mb-4"><i class="fa-solid fa-cubes text-xl"></i></div>
+                    <h4 class="font-bold text-lg text-slate-800">End-to-End Support</h4>
+                </div>
+                <!-- 4 -->
+                <div class="bg-gradient-to-b from-slate-50 to-white p-8 rounded-2xl border border-slate-100 shadow-sm text-center">
+                    <div class="w-12 h-12 bg-orange-50 text-brandOrange rounded-xl flex items-center justify-center mx-auto mb-4"><i class="fa-solid fa-handshake-angle text-xl"></i></div>
+                    <h4 class="font-bold text-lg text-slate-800">Long-Term Partnership</h4>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 12. FAQ -->
+    <section id="faq" class="py-20 bg-slate-50">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h2 class="text-3xl sm:text-4xl font-bold text-slate-900">FAQ</h2>
+                <div class="h-1 w-20 bg-brandOrange mx-auto mt-4 rounded-full"></div>
+            </div>
+            <!-- Accordion Layout -->
+            <div class="space-y-4">
+                <details class="bg-white p-6 rounded-2xl border border-slate-100 shadow-sm group" open>
+                    <summary class="font-bold text-lg text-slate-800 list-none flex justify-between items-center cursor-pointer">
+                        <span>কারা আবেদন করতে পারবেন?</span>
+                        <span class="text-slate-400 group-open:rotate-180 transition-transform"><i class="fa-solid fa-chevron-down"></i></span>
+                    </summary>
+                    <p class="text-slate-600 mt-4 pt-4 border-t">স্টুডেন্ট, ফ্রিল্যান্সার, ক্ষুদ্র ব্যবসায়ী, কনটেন্ট ক্রিয়েটর এবং যেকোনো সম্ভাবনাময় আইডিয়াপ্রাপ্ত উদ্যোক্তারা আবেদন করতে পারবেন।</p>
+                </details>
+
+                <details class="bg-white p-6 rounded-2xl border border-slate-100 shadow-sm group">
+                    <summary class="font-bold text-lg text-slate-800 list-none flex justify-between items-center cursor-pointer">
+                        <span>নির্বাচন প্রক্রিয়া কী?</span>
+                        <span class="text-slate-400 group-open:rotate-180 transition-transform"><i class="fa-solid fa-chevron-down"></i></span>
+                    </summary>
+                    <p class="text-slate-600 mt-4 pt-4 border-t">আবেদন জমা দেওয়ার পর ইনিশিয়াল স্ক্রিনিং, ফাউন্ডার ইন্টারভিউ এবং চূড়ান্ত সিলেকশনের মাধ্যমে টিম বাছাই করা হবে।</p>
+                </details>
+
+                <details class="bg-white p-6 rounded-2xl border border-slate-100 shadow-sm group">
+                    <summary class="font-bold text-lg text-slate-800 list-none flex justify-between items-center cursor-pointer">
+                        <span>Website না App—দুটোই কি পাওয়া যাবে?</span>
+                        <span class="text-slate-400 group-open:rotate-180 transition-transform"><i class="fa-solid fa-chevron-down"></i></span>
+                    </summary>
+                    <p class="text-slate-600 mt-4 pt-4 border-t">আপনার বিজনেসের প্রয়োজনীয়তার উপর ভিত্তি করে ওয়েবসাইট, মোবাইল অ্যাপ অথবা উভয় সাপোর্টই দেওয়া হবে।</p>
+                </details>
+
+                <details class="bg-white p-6 rounded-2xl border border-slate-100 shadow-sm group">
+                    <summary class="font-bold text-lg text-slate-800 list-none flex justify-between items-center cursor-pointer">
+                        <span>Development Timeline কত?</span>
+                        <span class="text-slate-400 group-open:rotate-180 transition-transform"><i class="fa-solid fa-chevron-down"></i></span>
+                    </summary>
+                    <p class="text-slate-600 mt-4 pt-4 border-t">সাধারণত সিলেকশন এবং আইডিয়া ভ্যালিডেশনের পর ১ থেকে ৩ মাসের মধ্যে MVP রেডি করা হয়।</p>
+                </details>
+
+                <details class="bg-white p-6 rounded-2xl border border-slate-100 shadow-sm group">
+                    <summary class="font-bold text-lg text-slate-800 list-none flex justify-between items-center cursor-pointer">
+                        <span>Digital Marketing Support কীভাবে দেওয়া হবে?</span>
+                        <span class="text-slate-400 group-open:rotate-180 transition-transform"><i class="fa-solid fa-chevron-down"></i></span>
+                    </summary>
+                    <p class="text-slate-600 mt-4 pt-4 border-t">ব্র্যান্ডিং, ফেসবুক মার্কেটিং, কনটেন্ট স্ট্র্যাটেজি এবং লিড জেনারেশনের মাধ্যমে প্রফেশনাল মার্কেটিং সাপোর্ট নিশ্চিত করা হবে।</p>
+                </details>
+
+                <details class="bg-white p-6 rounded-2xl border border-slate-100 shadow-sm group">
+                    <summary class="font-bold text-lg text-slate-800 list-none flex justify-between items-center cursor-pointer">
+                        <span>Investor Support বলতে কী বোঝায়?</span>
+                        <span class="text-slate-400 group-open:rotate-180 transition-transform"><i class="fa-solid fa-chevron-down"></i></span>
+                    </summary>
+                    <p class="text-slate-600 mt-4 pt-4 border-t">আপনার বিজনেস মডেল ভ্যালিডেশনের পর উপযুক্ত ইনভেস্টরদের সাথে পিচিং এবং কানেকশন তৈরি করতে সাহায্য করা হবে।</p>
+                </details>
+            </div>
+        </div>
+    </section>
+
+    <!-- 13. Application Form -->
+    <section id="apply" class="py-20 bg-white">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 bg-slate-50 p-8 sm:p-12 rounded-3xl border border-slate-100 shadow-xl">
+            <div class="text-center mb-10">
+                <h2 class="text-3xl font-bold text-slate-900">Application Form</h2>
+                <p class="text-slate-500 mt-2">আপনার সঠিক তথ্য দিয়ে ফর্মটি পূরণ করুন</p>
+            </div>
+            <form class="space-y-6">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div>
+                        <label class="block text-sm font-medium text-slate-700 mb-2">Full Name</label>
+                        <input type="text" required class="w-full px-4 py-3 rounded-xl border border-slate-200 bg-white focus:outline-none focus:border-brandBlue transition">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-slate-700 mb-2">Mobile Number</label>
+                        <input type="tel" required class="w-full px-4 py-3 rounded-xl border border-slate-200 bg-white focus:outline-none focus:border-brandBlue transition">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-slate-700 mb-2">Email</label>
+                        <input type="email" required class="w-full px-4 py-3 rounded-xl border border-slate-200 bg-white focus:outline-none focus:border-brandBlue transition">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-slate-700 mb-2">City</label>
+                        <input type="text" required class="w-full px-4 py-3 rounded-xl border border-slate-200 bg-white focus:outline-none focus:border-brandBlue transition">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-slate-700 mb-2">Startup Name</label>
+                        <input type="text" class="w-full px-4 py-3 rounded-xl border border-slate-200 bg-white focus:outline-none focus:border-brandBlue transition">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-slate-700 mb-2">Business Category</label>
+                        <select class="w-full px-4 py-3 rounded-xl border border-slate-200 bg-white focus:outline-none focus:border-brandBlue transition">
+                            <option>E-commerce</option>
+                            <option>Education</option>
+                            <option>Healthcare</option>
+                            <option>Service</option>
+                            <option>SaaS</option>
+                            <option>Other</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div>
+                        <label class="block text-sm font-medium text-slate-700 mb-2">Startup Stage</label>
+                        <select class="w-full px-4 py-3 rounded-xl border border-slate-200 bg-white focus:outline-none focus:border-brandBlue transition">
+                            <option>Idea Stage</option>
+                            <option>Existing Business</option>
+                            <option>Prototype Stage</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-slate-700 mb-2">What do you need?</label>
+                        <select class="w-full px-4 py-3 rounded-xl border border-slate-200 bg-white focus:outline-none focus:border-brandBlue transition">
+                            <option>Website</option>
+                            <option>App</option>
+                            <option>Both</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div>
+                    <label class="block text-sm font-medium text-slate-700 mb-2">Describe Your Business Idea</label>
+                    <textarea rows="4" required class="w-full px-4 py-3 rounded-xl border border-slate-200 bg-white focus:outline-none focus:border-brandBlue transition"></textarea>
+                </div>
+
+                <div>
+                    <label class="block text-sm font-medium text-slate-700 mb-2">Why Should We Select You?</label>
+                    <textarea rows="3" required class="w-full px-4 py-3 rounded-xl border border-slate-200 bg-white focus:outline-none focus:border-brandBlue transition"></textarea>
+                </div>
+
+                <div class="flex items-center space-x-3">
+                    <input type="checkbox" required id="terms" class="h-4 w-4 rounded border-slate-300 text-brandBlue focus:ring-brandBlue">
+                    <label for="terms" class="text-sm text-slate-600 cursor-pointer">I agree to the terms.</label>
+                </div>
+
+                <div>
+                    <button type="submit" class="w-full bg-brandDark text-white py-4 rounded-xl font-bold hover:bg-slate-800 transition tracking-wide">Submit Application</button>
+                </div>
             </form>
         </div>
     </section>
 
-    <footer class="bg-slate-950 text-white py-12 px-4 text-center">
-        <p class="text-sm text-slate-500">© 2026 GTECK Founder Accelerator. All rights reserved.</p>
+    <!-- 14. Final CTA Section -->
+    <section class="py-20 bg-gradient-to-r from-brandBlue to-blue-800 text-white text-center relative overflow-hidden">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 space-y-6">
+            <h2 class="text-3xl sm:text-5xl font-bold">Ready To Build Your Startup?</h2>
+            <p class="text-lg text-blue-100 max-w-xl mx-auto">Transform Your Idea Into A Real Business With GTECK.</p>
+            <div class="pt-4">
+                <a href="#apply" class="bg-brandOrange text-white px-8 py-4 rounded-full font-bold text-lg hover:bg-orange-600 transition shadow-lg shadow-orange-500/30 inline-block">Apply Now</a>
+            </div>
+        </div>
+        <div class="absolute -top-24 -left-24 w-96 h-96 bg-white/5 rounded-full blur-2xl"></div>
+    </section>
+
+    <!-- 15. Footer -->
+    <footer class="bg-slate-900 text-slate-400 py-12 border-t border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+                <!-- Col 1: Logo/Brand -->
+                <div class="space-y-4">
+                    <span class="text-2xl font-bold tracking-wider text-white">G<span class="text-brandBlue">TECK</span></span>
+                    <p class="text-sm text-slate-400">A 360° Startup Support Program for modern founders.</p>
+                </div>
+                <!-- Col 2: Quick Links -->
+                <div>
+                    <h4 class="text-white font-bold mb-4">Quick Links</h4>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="#home" class="hover:text-white transition">Home</a></li>
+                        <li><a href="#about" class="hover:text-white transition">About Program</a></li>
+                        <li><a href="#benefits" class="hover:text-white transition">Benefits</a></li>
+                        <li><a href="#selection" class="hover:text-white transition">Selection Process</a></li>
+                    </ul>
+                </div>
+                <!-- Col 3: Social Media -->
+                <div>
+                    <h4 class="text-white font-bold mb-4">Social Media</h4>
+                    <div class="flex space-x-4 text-xl">
+                        <a href="#" class="hover:text-white transition"><i class="fa-brands fa-facebook"></i></a>
+                        <a href="#" class="hover:text-white transition"><i class="fa-brands fa-linkedin"></i></a>
+                        <a href="#" class="hover:text-white transition"><i class="fa-brands fa-twitter"></i></a>
+                    </div>
+                </div>
+                <!-- Col 4: Contact Info -->
+                <div class="space-y-2 text-sm">
+                    <h4 class="text-white font-bold mb-4">Contact Information</h4>
+                    <p><i class="fa-solid fa-envelope mr-2"></i> info@gteck.com</p>
+                    <p><i class="fa-solid fa-phone mr-2"></i> +880 1234 567890</p>
+                    <p><i class="fa-solid fa-location-dot mr-2"></i> Dhaka, Bangladesh</p>
+                </div>
+            </div>
+            <div class="border-t border-slate-800 pt-8 text-center text-xs">
+                <p>&copy; 2026 GTECK Founder Accelerator. All Rights Reserved.</p>
+            </div>
+        </div>
     </footer>
 
 </body>
