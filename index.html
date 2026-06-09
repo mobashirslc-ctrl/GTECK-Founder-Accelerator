@@ -1,517 +1,102 @@
-import { useState } from 'react';
-import { 
-  BookOpen, Phone, ChevronDown, Rocket, Laptop, Smartphone, BarChart3, 
-  AlertCircle, Users, Code, Cpu, Shield, HelpCircle, ArrowRight, CheckCircle2,
-  Mail, MapPin, Facebook, Twitter, Linkedin
-} from 'lucide-react';
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GTECK Founder Accelerator | A 360° Startup Support Program</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; scroll-behavior: smooth; }
+        .glass-orange {
+            background: rgba(249, 115, 22, 0.1);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(249, 115, 22, 0.3);
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-900 antialiased">
 
-export function PublicLayout() {
-  const [activeFaq, setActiveFaq] = useState<number | null>(null);
-  const [formData, setFormData] = useState({
-    fullName: '', mobileNumber: '', email: '', city: '', startupName: '',
-    businessCategory: '', startupStage: '', requirement: '', businessIdea: '',
-    whySelect: '', agree: false
-  });
-
-  const toggleFaq = (index: number) => {
-    setActiveFaq(activeFaq === index ? null : index);
-  };
-
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
-    const { name, value, type } = e.target;
-    if (type === 'checkbox') {
-      const checked = (e.target as HTMLInputElement).checked;
-      setFormData({ ...formData, [name]: checked });
-    } else {
-      setFormData({ ...formData, [name]: value });
-    }
-  };
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    console.log("Application Submitted:", formData);
-    alert("GTECK Founder Accelerator-এ আপনার আবেদনটি সফলভাবে জমা হয়েছে!");
-  };
-
-  const scrollToSection = (id: string) => {
-    const element = document.getElementById(id);
-    if (element) element.scrollIntoView({ behavior: 'smooth' });
-  };
-
-  return (
-    <div className="min-h-screen bg-slate-50 text-slate-900 font-sans selection:bg-orange-500 selection:text-white antialiased">
-      
-      {/* 1. Navbar */}
-      <nav className="bg-white/80 backdrop-blur-md border-b border-slate-100 sticky top-0 z-50 shadow-sm transition-all">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex items-center justify-between">
-          <div className="flex items-center gap-2 cursor-pointer" onClick={() => window.scrollTo({top: 0, behavior: 'smooth'})}>
-            <div className="bg-gradient-to-tr from-blue-600 to-orange-500 p-2 rounded-xl text-white shadow-md shadow-blue-500/10">
-              <Rocket size={22} className="animate-pulse" />
-            </div>
-            <div>
-              <span className="font-extrabold text-xl tracking-tight text-slate-900">GTECK</span>
-              <span className="text-orange-500 font-bold text-xs block -mt-1 tracking-wider uppercase">Accelerator</span>
-            </div>
-          </div>
-
-          <div className="hidden md:flex items-center gap-8">
-            <button onClick={() => window.scrollTo({top: 0, behavior: 'smooth'})} className="text-sm font-semibold text-slate-600 hover:text-orange-500 transition-colors">Home</button>
-            <button onClick={() => scrollToSection('about')} className="text-sm font-semibold text-slate-600 hover:text-orange-500 transition-colors">About Program</button>
-            <button onClick={() => scrollToSection('benefits')} className="text-sm font-semibold text-slate-600 hover:text-orange-500 transition-colors">Benefits</button>
-            <button onClick={() => scrollToSection('process')} className="text-sm font-semibold text-slate-600 hover:text-orange-500 transition-colors">Selection Process</button>
-            <button onClick={() => scrollToSection('faq')} className="text-sm font-semibold text-slate-600 hover:text-orange-500 transition-colors">FAQ</button>
-          </div>
-
-          <button 
-            onClick={() => scrollToSection('apply')} 
-            className="bg-slate-900 text-white text-sm font-bold px-6 py-2.5 rounded-xl hover:bg-orange-500 shadow-lg shadow-slate-900/10 transition-all duration-300 transform hover:-translate-y-0.5"
-          >
-            Apply Now
-          </button>
-        </div>
-      </nav>
-
-      {/* 2. Hero Section with Premium Orange Glassmorphism Banner */}
-      <section className="relative overflow-hidden bg-gradient-to-b from-blue-950 via-slate-900 to-slate-950 text-white pt-24 pb-20 px-4 sm:px-6 lg:px-8">
-        <div className="absolute top-0 right-0 w-96 h-96 bg-blue-600/10 rounded-full blur-3xl pointer-events-none"></div>
-        <div className="absolute bottom-0 left-0 w-96 h-96 bg-orange-600/10 rounded-full blur-3xl pointer-events-none"></div>
-        
-        <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-          <div className="lg:col-span-7 space-y-6 text-left">
-            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-xs font-semibold tracking-wider uppercase text-orange-400 bg-orange-500/10 border border-orange-500/20">
-              ⚡ GTECK Founder Accelerator
-            </div>
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black tracking-tight leading-tight bg-gradient-to-r from-white via-slate-100 to-slate-300 bg-clip-text text-transparent">
-              A 360° Startup <br /><span className="text-orange-500">Support Program</span>
-            </h1>
-            <p className="text-lg sm:text-xl font-bold text-blue-300 leading-relaxed">
-              আপনার কাছে কি একটি ব্যবসায়িক আইডিয়া আছে? কিন্তু টেকনিক্যাল টিম, পর্যাপ্ত বাজেট কিংবা সঠিক দিকनिर्देशনার অভাবে শুরু করতে পারছেন না?
-            </p>
-            <p className="text-slate-300 text-base leading-relaxed">
-              আমরা নির্বাচিত Startup Founder-দের জন্য Website/App Development, Digital Marketing Support, Mentorship এবং Growth Support প্রদান করবো।
-            </p>
-            <div className="flex flex-wrap gap-4 pt-4">
-              <button onClick={() => scrollToSection('apply')} className="bg-orange-500 text-white font-bold px-8 py-3.5 rounded-xl hover:bg-orange-600 shadow-xl shadow-orange-500/20 transition-all transform hover:-translate-y-0.5 flex items-center gap-2">
-                Apply Now <ArrowRight size={18} />
-              </button>
-              <button onClick={() => scrollToSection('about')} className="bg-white/10 hover:bg-white/15 border border-white/10 text-white font-bold px-8 py-3.5 rounded-xl transition-all">
-                Learn More
-              </button>
-            </div>
-          </div>
-
-          {/* Right Side Glassmorphism Box */}
-          <div className="lg:col-span-5 relative">
-            {/* Orange Glassmorphism Wrapper */}
-            <div className="p-8 rounded-3xl bg-orange-500/10 backdrop-blur-xl border border-orange-500/30 shadow-2xl shadow-orange-500/5 space-y-6">
-              <div className="flex justify-between items-center border-b border-orange-500/20 pb-4">
-                <span className="text-sm font-semibold tracking-wider uppercase text-orange-300">Startup Ecosystem</span>
-                <span className="w-2.5 h-2.5 bg-orange-500 rounded-full animate-ping"></span>
-              </div>
-              <div className="grid grid-cols-2 gap-4">
-                <div className="p-4 rounded-2xl bg-white/5 border border-white/5 flex flex-col items-center justify-center text-center">
-                  <Laptop className="text-blue-400 mb-2" size={28} />
-                  <span className="text-xs font-semibold text-slate-300">Website MVP</span>
+    <!-- 1. Navbar -->
+    <nav class="bg-white/80 backdrop-blur-md border-b border-slate-100 sticky top-0 z-50 shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex items-center justify-between">
+            <div class="flex items-center gap-2 cursor-pointer" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">
+                <div class="bg-gradient-to-tr from-blue-600 to-orange-500 p-2 rounded-xl text-white shadow-md">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.71.79-1.81.79-1.81l-1.98-1.19s-1.1 1.1-1.81 1.81z"/><path d="M10 10V4.5L16 3l1.5 1.5-1.5 6H21l-1.5 6H14l-1.5 1.5-6-1.5L4.5 10H10z"/></svg>
                 </div>
-                <div className="p-4 rounded-2xl bg-white/5 border border-white/5 flex flex-col items-center justify-center text-center">
-                  <Smartphone className="text-orange-400 mb-2" size={28} />
-                  <span className="text-xs font-semibold text-slate-300">Mobile App</span>
+                <div>
+                    <span class="font-extrabold text-xl tracking-tight text-slate-900">GTECK</span>
+                    <span class="text-orange-500 font-bold text-xs block -mt-1 tracking-wider uppercase">Accelerator</span>
                 </div>
-                <div className="p-4 rounded-2xl bg-white/5 border border-white/5 flex flex-col items-center justify-center text-center">
-                  <BarChart3 className="text-emerald-400 mb-2" size={28} />
-                  <span className="text-xs font-semibold text-slate-300">Growth Graph</span>
+            </div>
+            <div class="hidden md:flex items-center gap-8">
+                <a href="#about" class="text-sm font-semibold text-slate-600 hover:text-orange-500 transition-colors">About</a>
+                <a href="#benefits" class="text-sm font-semibold text-slate-600 hover:text-orange-500 transition-colors">Benefits</a>
+                <a href="#process" class="text-sm font-semibold text-slate-600 hover:text-orange-500 transition-colors">Process</a>
+                <a href="#faq" class="text-sm font-semibold text-slate-600 hover:text-orange-500 transition-colors">FAQ</a>
+            </div>
+            <a href="#apply" class="bg-slate-900 text-white text-sm font-bold px-6 py-2.5 rounded-xl hover:bg-orange-500 transition-all">Apply Now</a>
+        </div>
+    </nav>
+
+    <!-- 2. Hero Section -->
+    <section class="relative overflow-hidden bg-gradient-to-b from-blue-950 via-slate-900 to-slate-950 text-white pt-24 pb-20 px-4">
+        <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+            <div class="lg:col-span-7 space-y-6">
+                <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-xs font-semibold tracking-wider uppercase text-orange-400 bg-orange-500/10 border border-orange-500/20">⚡ GTECK Founder Accelerator</div>
+                <h1 class="text-4xl sm:text-6xl font-black leading-tight">A 360° Startup <br><span class="text-orange-500">Support Program</span></h1>
+                <p class="text-lg font-bold text-blue-300">আপনার কাছে কি একটি ব্যবসায়িক আইডিয়া আছে? কিন্তু টেকনিক্যাল টিম বা বাজেটের অভাবে শুরু করতে পারছেন না?</p>
+                <p class="text-slate-300">আমরা নির্বাচিত Startup Founder-দের জন্য Development, Marketing এবং Mentorship সাপোর্ট প্রদান করবো।</p>
+                <div class="flex flex-wrap gap-4 pt-4">
+                    <a href="#apply" class="bg-orange-500 text-white font-bold px-8 py-3.5 rounded-xl hover:bg-orange-600 shadow-xl shadow-orange-500/20">Apply Now</a>
+                    <a href="#about" class="bg-white/10 border border-white/10 text-white font-bold px-8 py-3.5 rounded-xl">Learn More</a>
                 </div>
-                <div className="p-4 rounded-2xl bg-white/5 border border-white/5 flex flex-col items-center justify-center text-center">
-                  <Rocket className="text-amber-400 mb-2" size={28} />
-                  <span className="text-xs font-semibold text-slate-300">Scale Venture</span>
+            </div>
+            <div class="lg:col-span-5">
+                <div class="glass-orange p-8 rounded-3xl space-y-6">
+                    <div class="grid grid-cols-2 gap-4 text-center">
+                        <div class="p-4 rounded-2xl bg-white/5 border border-white/5">
+                            <div class="text-blue-400 mb-2 flex justify-center"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg></div>
+                            <span class="text-xs font-semibold text-slate-300">Website MVP</span>
+                        </div>
+                        <div class="p-4 rounded-2xl bg-white/5 border border-white/5">
+                            <div class="text-orange-400 mb-2 flex justify-center"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg></div>
+                            <span class="text-xs font-semibold text-slate-300">Mobile App</span>
+                        </div>
+                    </div>
                 </div>
-              </div>
             </div>
-          </div>
         </div>
-      </section>
+    </section>
 
-      {/* 3. Problem Section */}
-      <section className="py-20 bg-white px-4 sm:px-6 lg:px-8 text-center">
-        <div className="max-w-4xl mx-auto space-y-4 mb-12">
-          <h2 className="text-3xl sm:text-4xl font-black text-slate-900">
-            অনেক ভালো ব্যবসায়িক আইডিয়া শুরু হওয়ার আগেই হারিয়ে যায়
-          </h2>
-          <div className="w-16 h-1 bg-orange-500 mx-auto rounded-full"></div>
-        </div>
-        <div className="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6">
-          {[
-            { title: "Lack of Technical Team", desc: "দক্ষ ডেভেলপার বা সিটিও না থাকা।" },
-            { title: "Limited Budget", desc: "সফটওয়্যার ও অ্যাপ তৈরিতে বিপুল খরচ।" },
-            { title: "No Mentorship", desc: "সঠিক সময়ে গাইডলাইন বা পরামর্শের অভাব।" },
-            { title: "Marketing Challenges", desc: "টার্গেটেড অডিয়েন্সের কাছে না পৌঁছাতে পারা।" },
-            { title: "Lack of Business Guidance", desc: "আইডিয়া ভ্যালিডেশন এবং মডেল ডেভেলপমেন্ট ক্রাইসিস।" }
-          ].map((item, index) => (
-            <div key={index} className="p-6 rounded-2xl bg-slate-50 border border-slate-100 hover:border-orange-500/20 hover:bg-white shadow-sm transition-all duration-300 group text-left flex flex-col justify-between">
-              <AlertCircle className="text-orange-500 mb-4 group-hover:scale-110 transition-transform" size={24} />
-              <div>
-                <h4 className="font-bold text-slate-900 mb-1">{item.title}</h4>
-                <p className="text-sm text-slate-500">{item.desc}</p>
-              </div>
-            </div>
-          ))}
-        </div>
-      </section>
+    <!-- 3. About -->
+    <section id="about" class="py-20 bg-white px-4 text-center">
+        <h2 class="text-3xl sm:text-4xl font-black text-slate-900 mb-4">GTECK Founder Accelerator কী?</h2>
+        <p class="max-w-2xl mx-auto text-slate-600">GTECK-এর একটি বিশেষ উদ্যোগ, যার মাধ্যমে সম্ভাবনাময় উদ্যোক্তাদের Startup তৈরির জন্য 360° Support প্রদান করা হবে।</p>
+    </section>
 
-      {/* 4. About Program */}
-      <section id="about" className="py-20 bg-slate-50 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-          <div className="space-y-6">
-            <h2 className="text-3xl sm:text-4xl font-black text-slate-900">
-              GTECK Founder Accelerator কী?
-            </h2>
-            <p className="text-lg text-slate-600 leading-relaxed">
-              GTECK-এর একটি বিশেষ উদ্যোগ, যার মাধ্যমে সম্ভাবনাময় উদ্যোক্তাদের Startup তৈরির জন্য <span className="text-orange-600 font-bold">360° Support</span> প্রদান করা হবে।
-            </p>
-            <p className="text-slate-500 leading-relaxed">
-              আমরা কোনো সাধারণ ট্রেইনিং হাব নই; আমরা আপনার পার্টনার হিসেবে কাজ করবো। আপনার আইডিয়াকে একদম স্ক্র্যাচ থেকে একটি লাভজনক বিজনেস ও স্কেলেবল টেকনিক্যাল আর্কিটেকচারে রূপান্তর করতে যা যা প্রয়োজন, তার সব দায়িত্ব আমাদের এক্সপার্ট টিমের।
-            </p>
-            <button onClick={() => scrollToSection('apply')} className="bg-slate-900 hover:bg-orange-500 text-white font-bold px-6 py-3 rounded-xl transition-colors flex items-center gap-2 shadow-md">
-              Get Started Now <ArrowRight size={16} />
-            </button>
-          </div>
-          <div className="p-8 rounded-3xl bg-orange-500/10 border border-orange-500/20 backdrop-blur-lg flex items-center justify-center min-h-[300px]">
-            <div className="text-center space-y-4">
-              <Users size={64} className="text-orange-500 mx-auto" />
-              <div className="font-extrabold text-2xl text-slate-900">Founder + Team Co-creation</div>
-              <p className="text-sm text-slate-600 max-w-sm">আমরা আপনার ইন-হাউস টেকনিক্যাল এবং গ্রোথ পার্টনার হিসেবে কাজ করে স্টার্টআপকে সফল করি।</p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* 5. Who Can Apply */}
-      <section className="py-20 bg-white px-4 sm:px-6 lg:px-8">
-        <div className="max-w-4xl mx-auto text-center space-y-4 mb-12">
-          <h2 className="text-3xl sm:text-4xl font-black text-slate-900">কারা আবেদন করতে পারবেন?</h2>
-          <p className="text-slate-500">আপনার ব্যাকগ্রাউন্ড যাই হোক না কেন, উদ্ভাবনী আইডিয়া থাকলে আপনি এলিজিবল।</p>
-        </div>
-        <div className="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {[
-            "Students", "Freelancers", "Small Business Owners", 
-            "Content Creators", "Aspiring Entrepreneurs", "Existing Businesses Going Digital"
-          ].map((title, index) => (
-            <div key={index} className="p-6 rounded-2xl bg-slate-50 border border-slate-100 flex items-center gap-4 hover:shadow-md transition-all">
-              <div className="bg-blue-50 text-blue-600 p-3 rounded-xl font-bold text-lg">0{index + 1}</div>
-              <div className="font-bold text-lg text-slate-900">{title}</div>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      {/* 6. What Selected Founders Will Receive */}
-      <section id="benefits" className="py-20 bg-slate-50 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-4xl mx-auto text-center space-y-4 mb-12">
-          <h2 className="text-3xl sm:text-4xl font-black text-slate-900">নির্বাচিত ফউন্ডাররা যা যা পাবেন</h2>
-          <div className="w-16 h-1 bg-orange-500 mx-auto rounded-full"></div>
-        </div>
-        <div className="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-          {[
-            "Website Development Support", "Mobile App Development Support", "UI/UX Design", 
-            "Admin Dashboard", "Business Consultation", "Growth Strategy", 
-            "Digital Marketing Support", "Networking Opportunities", "Investor Connection Support", 
-            "Deployment Assistance"
-          ].map((benefit, index) => (
-            <div key={index} className="p-5 rounded-2xl bg-white border border-slate-100 shadow-sm flex flex-col justify-between hover:border-orange-500/30 transition-all group">
-              <CheckCircle2 className="text-emerald-500 mb-4 group-hover:scale-110 transition-transform" size={24} />
-              <div className="font-bold text-slate-800 text-base">{benefit}</div>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      {/* 7. Selection Process */}
-      <section id="process" className="py-20 bg-white px-4 sm:px-6 lg:px-8">
-        <div className="max-w-4xl mx-auto text-center space-y-4 mb-16">
-          <h2 className="text-3xl sm:text-4xl font-black text-slate-900">Selection Process</h2>
-          <p className="text-slate-500">আমাদের সুনির্দিষ্ট ৫টি ধাপের সিলেকশন ইকোসিস্টেম</p>
-        </div>
-        <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-5 gap-6 relative">
-          {[
-            { step: "STEP 1", title: "Application Submission" },
-            { step: "STEP 2", title: "Initial Screening" },
-            { step: "STEP 3", title: "Founder Interview" },
-            { step: "STEP 4", title: "Final Selection" },
-            { step: "STEP 5", title: "Build & Launch" }
-          ].map((item, index) => (
-            <div key={index} className="p-6 rounded-2xl bg-slate-50 border border-slate-100 text-center relative flex flex-col items-center justify-center">
-              <span className="text-xs font-bold px-2.5 py-1 bg-orange-500/10 text-orange-600 rounded-full mb-3">{item.step}</span>
-              <h4 className="font-bold text-slate-900 text-sm sm:text-base">{item.title}</h4>
-              {index < 4 && (
-                <div className="hidden md:block absolute top-1/2 -right-4 transform -translate-y-1/2 z-10 text-slate-300 font-bold text-xl">→</div>
-              )}
-            </div>
-          ))}
-        </div>
-      </section>
-
-      {/* 8. Tech Support Package */}
-      <section className="py-20 bg-slate-900 text-white px-4 sm:px-6 lg:px-8">
-        <div className="max-w-4xl mx-auto text-center space-y-4 mb-12">
-          <h2 className="text-3xl sm:text-4xl font-black">Startup Technology Support</h2>
-          <p className="text-blue-400 font-medium">আপনার এন্টারপ্রাইজ লেভেল টেকনিক্যাল আর্কিটেকচার আমরা তৈরি করবো</p>
-        </div>
-        <div className="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6">
-          {[
-            { title: "Website MVP", desc: "Professional Website" },
-            { title: "Mobile App MVP", desc: "Android/iOS App" },
-            { title: "Admin Panel", desc: "Dashboard Systems" },
-            { title: "UI/UX Design", desc: "Modern Interface" },
-            { title: "Deployment Support", desc: "Launch Assistance" }
-          ].map((tech, index) => (
-            <div key={index} className="p-6 rounded-2xl bg-white/5 border border-white/5 hover:border-orange-500/40 transition-all text-center">
-              <Code className="text-orange-500 mx-auto mb-4" size={32} />
-              <h4 className="font-bold text-lg mb-1">{tech.title}</h4>
-              <p className="text-xs text-slate-400">{tech.desc}</p>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      {/* 9. Additional Support */}
-      <section className="py-20 bg-white px-4 sm:px-6 lg:px-8">
-        <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-8">
-          <div className="p-8 rounded-3xl bg-blue-50/50 border border-blue-100 space-y-6">
-            <h3 className="text-2xl font-black text-blue-900 border-b border-blue-100 pb-3">Digital Marketing Support</h3>
-            <ul className="space-y-3">
-              {["Branding & Communication Strategy", "Facebook & Social Media Paid Marketing", "Content Strategy & Funnel Mapping", "Lead Generation & Acquisition Campaigns"].map((list, i) => (
-                <li key={i} className="flex items-center gap-2 text-slate-700 text-sm sm:text-base">
-                  <CheckCircle2 size={16} className="text-blue-600 shrink-0" /> {list}
-                </li>
-              ))}
-            </ul>
-          </div>
-          <div className="p-8 rounded-3xl bg-orange-50/50 border border-orange-100 space-y-6">
-            <h3 className="text-2xl font-black text-orange-900 border-b border-orange-100 pb-3">Business Growth Support</h3>
-            <ul className="space-y-3">
-              {["Dedicated Mentorship with Industry Leaders", "Business Model Guidance & Pricing Structure", "Market Validation & Pilot Run Mapping", "Go-To-Market (GTM) Launch Strategy"].map((list, i) => (
-                <li key={i} className="flex items-center gap-2 text-slate-700 text-sm sm:text-base">
-                  <CheckCircle2 size={16} className="text-orange-600 shrink-0" /> {list}
-                </li>
-              ))}
-            </ul>
-          </div>
-        </div>
-      </section>
-
-      {/* 10. Success Roadmap */}
-      <section className="py-20 bg-slate-50 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-4xl mx-auto text-center space-y-4 mb-16">
-          <h2 className="text-3xl sm:text-4xl font-black text-slate-900">Success Roadmap</h2>
-          <p className="text-slate-500">আইডিয়া থেকে সাকসেসফুল স্কেলিংয়ের লং-টার্ম রোডম্যাপ</p>
-        </div>
-        <div className="max-w-5xl mx-auto flex flex-wrap justify-center items-center gap-4 sm:gap-6">
-          {["Idea", "Validation", "Selection", "Development", "Launch", "Growth"].map((node, idx) => (
-            <div key={idx} className="flex items-center gap-3">
-              <div className="px-6 py-3 rounded-xl bg-white border border-slate-200 shadow-sm font-bold text-sm sm:text-base text-slate-800 hover:border-orange-500 transition-colors">
-                {node}
-              </div>
-              {idx < 5 && <span className="text-slate-300 font-bold">→</span>}
-            </div>
-          ))}
-        </div>
-      </section>
-
-      {/* 11. Why GTECK */}
-      <section className="py-20 bg-white px-4 sm:px-6 lg:px-8">
-        <div className="max-w-4xl mx-auto text-center space-y-4 mb-12">
-          <h2 className="text-3xl sm:text-4xl font-black text-slate-900">Why GTECK</h2>
-          <div className="w-16 h-1 bg-orange-500 mx-auto rounded-full"></div>
-        </div>
-        <div className="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          {[
-            { title: "Experienced Team", icon: <Users size={28} /> },
-            { title: "Startup-Focused Approach", icon: <Cpu size={28} /> },
-            { title: "End-to-End Support", icon: <Code size={28} /> },
-            { title: "Long-Term Partnership", icon: <Shield size={28} /> }
-          ].map((item, idx) => (
-            <div key={idx} className="p-6 rounded-2xl bg-slate-50 border border-slate-100 hover:bg-white hover:shadow-xl transition-all duration-300 text-left">
-              <div className="text-orange-500 mb-4">{item.icon}</div>
-              <h4 className="font-extrabold text-lg text-slate-900 mb-2">{item.title}</h4>
-              <p className="text-xs text-slate-500 leading-relaxed">আমরা একটি সাস্টেইনেবল সফটওয়্যার ইকোসিস্টেম ও অটোমেটেড মাল্টি-ড্যাশবোর্ড ইন্টিগ্রেশনে বিশ্বাসী।</p>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      {/* 12. FAQ Section */}
-      <section id="faq" className="py-20 bg-slate-50 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-4xl mx-auto text-center space-y-4 mb-12">
-          <h2 className="text-3xl sm:text-4xl font-black text-slate-900">Frequently Asked Questions</h2>
-          <p className="text-slate-500">প্রোগ্রাম নিয়ে সাধারণ কিছু জিজ্ঞাসার উত্তর</p>
-        </div>
-        <div className="max-w-3xl mx-auto space-y-4">
-          {[
-            { q: "কারা আবেদন করতে পারবেন?", a: "যেকোনো স্টুডেন্ট, ফ্রিল্যান্সার, স্মল বিজনেস ওনার বা এস্পায়ারিং এন্টারপ্রেনিউর যাদের কাছে একটি প্রমিজিং স্টার্টআপ আইডিয়া আছে তারা আবেদন করতে পারবেন।" },
-            { q: "নির্বাচন প্রক্রিয়া কী?", a: "আবেদন করার পর প্রাথমিক স্ক্রিনিং করা হবে। এরপর একটি ওয়ান-টু-ওয়ান ফাউন্ডার ইন্টারভিউ সেশনের মাধ্যমে চূড়ান্ত প্রজেক্ট সিলেক্ট করা হবে।" },
-            { q: "Website না App—দুটোই কি পাওয়া যাবে?", a: "আপনার স্টার্টআপের রিকোয়ারমেন্ট এবং আইডিয়ার ওপর বেস করে ওয়েবসাইট, অ্যাপ কিংবা দুটোরই MVP ডেভেলপমেন্ট সাপোর্ট প্রোভাইড করা হবে।" },
-            { q: "Development Timeline কত?", a: "আইডিয়ার গভীরতা ও জটিলতার ওপর নির্ভর করে সাধারণত ৩ থেকে ৬ মাসের মধ্যে কমপ্লিট ডেভেলপমেন্ট সম্পন্ন করা হয়।" },
-            { q: "Digital Marketing Support কীভাবে দেওয়া হবে?", a: "ব্র্যান্ড গাইডলাইন, ফেসবুক অ্যাড রান, কন্টেন্ট স্ট্র্যাটেজি এবং লিড জেনারেশন ফানেল তৈরি করতে আমাদের নিজস্ব ইন-হাউস টিম সরাসরি হেল্প করবে।" },
-            { q: "Investor Support বলতে কী বোঝায়?", a: "প্রজেক্টের প্রোডাক্ট রেডি (MVP Launch) হওয়ার পর ইনভেস্টরদের কাছে পিচ ডেক প্রেজেন্টেশন এবং নেটওয়ার্কিং কানেকশন বিল্ডআপে আমরা পূর্ণ গাইডেন্স দেবো।" }
-          ].map((faq, idx) => (
-            <div key={idx} className="bg-white border border-slate-200 rounded-2xl overflow-hidden shadow-sm">
-              <button 
-                onClick={() => toggleFaq(idx)}
-                className="w-full text-left px-6 py-4 font-bold text-slate-900 flex justify-between items-center hover:bg-slate-50 transition-colors"
-              >
-                <span>{faq.q}</span>
-                <ChevronDown size={18} className={`text-slate-400 transition-transform duration-200 ${activeFaq === idx ? 'transform rotate-180' : ''}`} />
-              </button>
-              {activeFaq === idx && (
-                <div className="px-6 pb-5 pt-1 text-sm text-slate-600 leading-relaxed border-t border-slate-100 bg-slate-50/50">
-                  {faq.a}
+    <!-- 4. Apply Section -->
+    <section id="apply" class="py-20 bg-slate-50 px-4">
+        <div class="max-w-3xl mx-auto bg-white p-8 rounded-3xl shadow-xl border border-slate-100">
+            <h2 class="text-2xl font-black text-center mb-8">Application Form</h2>
+            <form action="#" class="space-y-4">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <input type="text" placeholder="Full Name" class="w-full p-3 border rounded-xl outline-none focus:border-orange-500">
+                    <input type="tel" placeholder="Mobile Number" class="w-full p-3 border rounded-xl outline-none focus:border-orange-500">
                 </div>
-              )}
-            </div>
-          ))}
+                <input type="email" placeholder="Email Address" class="w-full p-3 border rounded-xl outline-none focus:border-orange-500">
+                <textarea placeholder="Describe Your Business Idea" rows="4" class="w-full p-3 border rounded-xl outline-none focus:border-orange-500"></textarea>
+                <button type="submit" class="w-full bg-slate-900 text-white font-black py-4 rounded-xl hover:bg-orange-500 transition-all">Submit Application</button>
+            </form>
         </div>
-      </section>
+    </section>
 
-      {/* 13. Interactive Application Form */}
-      <section id="apply" className="py-20 bg-white px-4 sm:px-6 lg:px-8">
-        <div className="max-w-4xl mx-auto text-center space-y-4 mb-12">
-          <h2 className="text-3xl sm:text-4xl font-black text-slate-900">Application Form</h2>
-          <p className="text-slate-500">আপনার আইডিয়াটি সাবমিট করে স্টার্টআপ জার্নি আজই শুরু করুন</p>
-        </div>
-        <div className="max-w-4xl mx-auto p-8 sm:p-10 rounded-3xl bg-slate-50 border border-slate-100 shadow-xl shadow-slate-100/50">
-          <form onSubmit={handleSubmit} className="space-y-6">
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-              <div className="flex flex-col text-left">
-                <label className="text-sm font-bold text-slate-700 mb-2">Full Name</label>
-                <input required type="text" name="fullName" value={formData.fullName} onChange={handleInputChange} className="p-3 border border-slate-200 bg-white rounded-xl text-sm focus:outline-none focus:border-orange-500" placeholder="Enter full name" />
-              </div>
-              <div className="flex flex-col text-left">
-                <label className="text-sm font-bold text-slate-700 mb-2">Mobile Number</label>
-                <input required type="tel" name="mobileNumber" value={formData.mobileNumber} onChange={handleInputChange} className="p-3 border border-slate-200 bg-white rounded-xl text-sm focus:outline-none focus:border-orange-500" placeholder="Enter mobile number" />
-              </div>
-              <div className="flex flex-col text-left">
-                <label className="text-sm font-bold text-slate-700 mb-2">Email Address</label>
-                <input required type="email" name="email" value={formData.email} onChange={handleInputChange} className="p-3 border border-slate-200 bg-white rounded-xl text-sm focus:outline-none focus:border-orange-500" placeholder="name@example.com" />
-              </div>
-              <div className="flex flex-col text-left">
-                <label className="text-sm font-bold text-slate-700 mb-2">City</label>
-                <input required type="text" name="city" value={formData.city} onChange={handleInputChange} className="p-3 border border-slate-200 bg-white rounded-xl text-sm focus:outline-none focus:border-orange-500" placeholder="e.g., Dhaka" />
-              </div>
-              <div className="flex flex-col text-left">
-                <label className="text-sm font-bold text-slate-700 mb-2">Startup Name (Optional)</label>
-                <input type="text" name="startupName" value={formData.startupName} onChange={handleInputChange} className="p-3 border border-slate-200 bg-white rounded-xl text-sm focus:outline-none focus:border-orange-500" placeholder="Enter startup name" />
-              </div>
-              <div className="flex flex-col text-left">
-                <label className="text-sm font-bold text-slate-700 mb-2">Business Category</label>
-                <select required name="businessCategory" value={formData.businessCategory} onChange={handleInputChange} className="p-3 border border-slate-200 bg-white rounded-xl text-sm focus:outline-none focus:border-orange-500">
-                  <option value="">Select Category</option>
-                  <option value="E-commerce">E-commerce</option>
-                  <option value="Education">Education (EdTech)</option>
-                  <option value="Healthcare">Healthcare</option>
-                  <option value="Service">Service Oriented</option>
-                  <option value="SaaS">SaaS Platform</option>
-                  <option value="Other">Other</option>
-                </select>
-              </div>
-              <div className="flex flex-col text-left">
-                <label className="text-sm font-bold text-slate-700 mb-2">Startup Stage</label>
-                <select required name="startupStage" value={formData.startupStage} onChange={handleInputChange} className="p-3 border border-slate-200 bg-white rounded-xl text-sm focus:outline-none focus:border-orange-500">
-                  <option value="">Select Stage</option>
-                  <option value="Idea Stage">Idea Stage</option>
-                  <option value="Prototype Stage">Prototype Stage</option>
-                  <option value="Existing Business">Existing Business Going Digital</option>
-                </select>
-              </div>
-              <div className="flex flex-col text-left">
-                <label className="text-sm font-bold text-slate-700 mb-2">What Do You Need?</label>
-                <select required name="requirement" value={formData.requirement} onChange={handleInputChange} className="p-3 border border-slate-200 bg-white rounded-xl text-sm focus:outline-none focus:border-orange-500">
-                  <option value="">Select Option</option>
-                  <option value="Website">Website Development</option>
-                  <option value="App">Mobile App (Android/iOS)</option>
-                  <option value="Both">Both Website & App MVP</option>
-                </select>
-              </div>
-            </div>
+    <footer class="bg-slate-950 text-white py-12 px-4 text-center">
+        <p class="text-sm text-slate-500">© 2026 GTECK Founder Accelerator. All rights reserved.</p>
+    </footer>
 
-            <div className="flex flex-col text-left">
-              <label className="text-sm font-bold text-slate-700 mb-2">Describe Your Business Idea</label>
-              <textarea required name="businessIdea" value={formData.businessIdea} onChange={handleInputChange} rows={4} className="p-3 border border-slate-200 bg-white rounded-xl text-sm focus:outline-none focus:border-orange-500" placeholder="আপনার স্টার্টআপ বা বিজনেস আইডিয়াটি সংক্ষেপে বুঝিয়ে লিখুন..."></textarea>
-            </div>
-
-            <div className="flex flex-col text-left">
-              <label className="text-sm font-bold text-slate-700 mb-2">Why Should We Select You?</label>
-              <textarea required name="whySelect" value={formData.whySelect} onChange={handleInputChange} rows={3} className="p-3 border border-slate-200 bg-white rounded-xl text-sm focus:outline-none focus:border-orange-500" placeholder="আমরা কেন আপনার স্টার্টআপটি সিলেক্ট করবো? আপনার লক্ষ্য কী?"></textarea>
-            </div>
-
-            <div className="flex items-start text-left gap-3 pt-2">
-              <input required type="checkbox" name="agree" id="agree" checked={formData.agree} onChange={handleInputChange} className="mt-1 accent-orange-500 h-4 w-4 rounded" />
-              <label htmlFor="agree" className="text-xs sm:text-sm text-slate-600 select-none">I agree to the terms, selection conditions, and program criteria of GTECK Accelerator.</label>
-            </div>
-
-            <button type="submit" className="w-full bg-slate-900 hover:bg-orange-500 text-white font-black py-4 rounded-xl transition-all shadow-lg shadow-slate-900/10">
-              Submit Application
-            </button>
-          </form>
-        </div>
-      </section>
-
-      {/* 14. Final CTA Section with Premium Orange Glassmorphism Overlay View */}
-      <section className="py-20 bg-gradient-to-tr from-blue-950 to-slate-900 text-white px-4 sm:px-6 lg:px-8 text-center relative overflow-hidden">
-        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-orange-500/10 rounded-full blur-3xl pointer-events-none"></div>
-        <div className="max-w-4xl mx-auto space-y-6 relative z-10">
-          <h2 className="text-3xl sm:text-5xl font-black tracking-tight">Ready To Build Your Startup?</h2>
-          <p className="text-lg text-slate-300 max-w-xl mx-auto">Transform Your Idea Into A Real Business With GTECK Ecosystem Support.</p>
-          <button onClick={() => scrollToSection('apply')} className="bg-orange-500 hover:bg-orange-600 text-white font-bold px-10 py-4 rounded-xl shadow-2xl shadow-orange-500/20 transition-all transform hover:-translate-y-0.5">
-            Apply Now
-          </button>
-        </div>
-      </section>
-
-      {/* 15. Footer */}
-      <footer className="bg-slate-950 text-white pt-16 pb-8 px-4 sm:px-6 lg:px-8 border-t border-slate-900">
-        <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-8 mb-12">
-          <div className="space-y-4">
-            <div className="flex items-center gap-2">
-              <div className="bg-orange-500 p-1.5 rounded-lg text-white">
-                <Rocket size={18} />
-              </div>
-              <span className="font-black text-lg tracking-tight">GTECK HUB</span>
-            </div>
-            <p className="text-sm text-slate-400 leading-relaxed">
-              A centralized 360° software execution and startup growth network accelerating regional innovation.
-            </p>
-          </div>
-          <div>
-            <h4 className="font-bold text-sm sm:text-base mb-4 tracking-wider uppercase text-slate-300">Quick Links</h4>
-            <div className="flex flex-col gap-2.5 text-sm text-slate-400">
-              <button onClick={() => window.scrollTo({top:0, behavior:'smooth'})} className="hover:text-orange-500 text-left transition-colors">Home</button>
-              <button onClick={() => scrollToSection('about')} className="hover:text-orange-500 text-left transition-colors">About Program</button>
-              <button onClick={() => scrollToSection('benefits')} className="hover:text-orange-500 text-left transition-colors">Benefits & Package</button>
-              <button onClick={() => scrollToSection('apply')} className="hover:text-orange-500 text-left transition-colors">Application Hub</button>
-            </div>
-          </div>
-          <div>
-            <h4 className="font-bold text-sm sm:text-base mb-4 tracking-wider uppercase text-slate-300">Contact Information</h4>
-            <div className="flex flex-col gap-3 text-sm text-slate-400">
-              <span className="flex items-center gap-2"><Mail size={16} className="text-orange-500 shrink-0" /> info@gteckhub.com</span>
-              <span className="flex items-center gap-2"><Phone size={16} className="text-orange-500 shrink-0" /> +880 1700-000000</span>
-              <span className="flex items-center gap-2"><MapPin size={16} className="text-orange-500 shrink-0" /> Level 4, Tech Space, Dhaka, BD</span>
-            </div>
-          </div>
-          <div className="space-y-4">
-            <h4 className="font-bold text-sm sm:text-base tracking-wider uppercase text-slate-300">Follow Us</h4>
-            <div className="flex items-center gap-3">
-              <a href="#" className="p-2.5 bg-white/5 hover:bg-orange-500 hover:text-white rounded-xl text-slate-400 transition-all"><Facebook size={18} /></a>
-              <a href="#" className="p-2.5 bg-white/5 hover:bg-orange-500 hover:text-white rounded-xl text-slate-400 transition-all"><Twitter size={18} /></a>
-              <a href="#" className="p-2.5 bg-white/5 hover:bg-orange-500 hover:text-white rounded-xl text-slate-400 transition-all"><Linkedin size={18} /></a>
-            </div>
-          </div>
-        </div>
-        <div className="max-w-7xl mx-auto border-t border-slate-900 pt-6 text-center text-xs sm:text-sm text-slate-500">
-          © 2026 GTECK Founder Accelerator Ecosystem. All rights reserved.
-        </div>
-      </footer>
-
-    </div>
-  );
-}
+</body>
+</html>
